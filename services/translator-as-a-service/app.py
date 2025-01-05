@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify
 import requests
 import os
@@ -60,4 +61,4 @@ def translate():
         return jsonify({"error": "Translation failed"}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
