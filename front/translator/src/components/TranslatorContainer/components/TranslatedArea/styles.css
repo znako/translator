@@ -1,0 +1,28 @@
+.TranslatedArea-textArea {
+  width: 500px;
+  max-width: 100%;
+
+  & .g-text-area__control {
+    padding-right: 36px;
+  }
+}
+
+.TranslatedArea-copy_container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  right: 5px;
+  top: 5px;
+}
+
+.TranslatedArea-copy_icon {
+  color: rgb(100, 97, 101);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--g-button-text-color-hover);
+  }
+}

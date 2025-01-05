@@ -1,0 +1,1 @@
+export { TranslatedArea } from "./TranslatedArea";

@@ -1,0 +1,1 @@
+export { TranslatorContainer } from "./TranslatorContainer";
