@@ -4,7 +4,7 @@ import { useDebounce } from "../../shared/hooks/useDebounce";
 import { CircleArrowRightFill } from "@gravity-ui/icons";
 import { InputArea } from "./components/InputArea";
 import { TranslatedArea } from "./components/TranslatedArea";
-import { getTranslatedText } from "./utlis/getTranslatedText";
+import { detectLanguage, getTranslatedText } from "./utlis/getTranslatedText";
 import { LANGUAGE_MAP } from "./utlis/languageMap";
 
 export const TranslatorContainer = () => {
@@ -21,11 +21,15 @@ export const TranslatorContainer = () => {
       return;
     }
 
-    getTranslatedText(text, translateLanguage)
-      .then(({ data }) => {
-        setTranslatedText(data.text);
-        setDetectedLanguage(LANGUAGE_MAP[data.source_language] ?? "Английский");
-      })
+    detectLanguage(text)
+      .then(({ data: languageData }) =>
+        getTranslatedText(text, translateLanguage, languageData.language)
+          .then(({ data: translatedData }) => {
+            setTranslatedText(translatedData.text);
+            setDetectedLanguage(LANGUAGE_MAP[languageData.language] ?? "");
+          })
+          .catch((error) => console.log(error))
+      )
       .catch((error) => console.log(error));
   }, 300);
 
@@ -35,11 +39,15 @@ export const TranslatorContainer = () => {
       return;
     }
 
-    getTranslatedText(originalText, language)
-      .then(({ data }) => {
-        setTranslatedText(data.text);
-        setDetectedLanguage(LANGUAGE_MAP[data.source_language]);
-      })
+    detectLanguage(originalText)
+      .then(({ data: languageData }) =>
+        getTranslatedText(originalText, language, languageData.language)
+          .then(({ data: translatedData }) => {
+            setTranslatedText(translatedData.text);
+            setDetectedLanguage(LANGUAGE_MAP[languageData.language] ?? "");
+          })
+          .catch((error) => console.log(error))
+      )
       .catch((error) => console.log(error));
   };
 
