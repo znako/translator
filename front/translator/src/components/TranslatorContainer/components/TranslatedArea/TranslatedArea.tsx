@@ -6,7 +6,7 @@ import "./styles.css";
 const SELECT_TRANSLATE_LANGUAGE_OPTIONS = [
   { value: "RUS", content: "Русский" },
   { value: "ENG", content: "Английский" },
-  { value: "USB", content: "Узбекский" },
+  { value: "UZB", content: "Узбекский" },
   { value: "TATAR", content: "Татарский" },
 ];
 

@@ -14,6 +14,11 @@ export const TranslatorContainer = () => {
 
   const onChangeInputText = useDebounce((text: string) => {
     setOriginalText(text);
+    if (!text) {
+      setTranslatedText("");
+      setDetectedLanguage("");
+      return;
+    }
     getTranslatedText(text, translateLanguage)
       .then(({ text, source_language }) => {
         setTranslatedText(text);
