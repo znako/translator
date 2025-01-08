@@ -38,7 +38,7 @@ export const TranslatorContainer = () => {
     getTranslatedText(originalText, language)
       .then(({ data }) => {
         setTranslatedText(data.text);
-        setDetectedLanguage(data.source_language);
+        setDetectedLanguage(LANGUAGE_MAP[data.source_language]);
       })
       .catch((error) => console.log(error));
   };
