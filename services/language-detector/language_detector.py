@@ -20,4 +20,10 @@ class LanguageDetector:
 
     def detect_language(self, text):
         result = self.detector(text)[0]
-        return {"language": result["label"], "confidence": result["score"]}
+        score = result["score"]
+        language = result["label"]
+        
+        if score < 0.5:
+            return {"language": "en"}  
+
+        return {"language": language}
