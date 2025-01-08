@@ -2,7 +2,11 @@
 
 https://github.com/znako/translator/blob/main/project_info/Presentation.pdf
 
-https://github.com/user-attachments/assets/2356ce1b-3ee0-4ebb-8905-bbfa80d32e04
+
+
+https://github.com/user-attachments/assets/5cea8669-7f2b-4c18-a5f7-9a22e00470ce
+
+
 
 
 ### Описание проекта
