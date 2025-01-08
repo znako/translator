@@ -2,6 +2,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+import logging
 import os
 from dotenv import load_dotenv
 
@@ -9,6 +10,8 @@ app = Flask(__name__)
 CORS(app)
 
 load_dotenv()
+
+logging.basicConfig(level=logging.DEBUG)
 
 # URL внешнего сервиса
 TRANSLATOR_URL = os.getenv("TRANSLATOR_URL")
@@ -24,13 +27,15 @@ def get_translated_text():
 
     text = data['text']
     target_language = data['target_language']
+    source_language = data['source_language']
 
     if len(target_language) > max_chars_in_target_lang:
         return jsonify({'error': f'Target language code should not exceed {max_chars_in_target_lang} characters'}), 400
 
     payload = {
         'text': text,
-        'target_language': target_language
+        'target_language': target_language,
+        'source_language': source_language
     }
 
     try:
@@ -41,12 +46,11 @@ def get_translated_text():
 
     language_data = response.json()
 
-    if 'source_language' or 'text' not in language_data:
+    if 'text' not in language_data:
         return jsonify({'error': 'Invalid response from language detection service'}), 500
 
     result = {
         'text': language_data['text'],
-        'source_language': language_data['source_language']
     }
 
     return jsonify(result)

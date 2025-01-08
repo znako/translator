@@ -1,6 +1,7 @@
 
 from flask import Flask, request, jsonify
 import requests
+import logging
 import os
 from dotenv import load_dotenv
 
@@ -8,17 +9,12 @@ load_dotenv()
 
 app = Flask(__name__)
 
-token_path = os.getenv("TOKEN_PATH")
+token = os.getenv("IAM_TOKEN")
 folder_id = os.getenv("FOLDER_ID")
 
+logging.basicConfig(level=logging.DEBUG)
 
 def translate_text(source_language, target_language, text):
-    # Загружаем токен из файла
-    IAM_TOKEN = os.path.join(os.getcwd(), token_path)
-
-    with open(IAM_TOKEN) as f:
-        IAM_TOKEN = f.read().strip()
-
     body = {
         "sourceLanguageCode": source_language,
         "targetLanguageCode": target_language,
@@ -28,7 +24,7 @@ def translate_text(source_language, target_language, text):
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer {0}".format(IAM_TOKEN)
+        "Authorization": "Bearer {0}".format(token)
     }
 
     response = requests.post(
