@@ -1,11 +1,16 @@
 
 from flask import Flask, request, jsonify
 import requests
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+load_dotenv()
+
 # URL внешнего сервиса
-EXTERNAL_SERVICE_URL = 'TODO: edit'
+TRANSLATOR_URL = os.getenv("TRANSLATOR_URL")
+LANGUAGE_DETECTOR_URL = os.getenv("LANGUAGE_DETECTOR_URL")
 
 @app.route('/get-translated-text', methods=['POST'])
 def get_translated_text():
@@ -27,7 +32,7 @@ def get_translated_text():
     }
 
     try:
-        response = requests.post(EXTERNAL_SERVICE_URL, json=payload)
+        response = requests.post(TRANSLATOR_URL, json=payload)
         response.raise_for_status()
     except requests.RequestException as e:
         return jsonify({"error": "Failed to reach the language detection service", "details": str(e)}), 500
@@ -43,6 +48,20 @@ def get_translated_text():
     }
 
     return jsonify(result)
+
+@app.route("/detect-language", methods=["POST"])
+def detect_language():
+    try:
+        data = request.get_json()
+        text = data.get("text")
+        if not text:
+            return jsonify({"error": "Text is required"}), 400
+
+        response = requests.post(LANGUAGE_DETECTOR_URL, json={"text": text})
+
+        return jsonify(response.json()), response.status_code
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
