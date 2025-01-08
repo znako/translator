@@ -2,7 +2,11 @@
 
 https://github.com/znako/translator/blob/main/project_info/Presentation.pdf
 
-https://github.com/user-attachments/assets/2356ce1b-3ee0-4ebb-8905-bbfa80d32e04
+
+
+https://github.com/user-attachments/assets/5cea8669-7f2b-4c18-a5f7-9a22e00470ce
+
+
 
 
 ### Описание проекта
@@ -25,7 +29,7 @@ https://github.com/user-attachments/assets/2356ce1b-3ee0-4ebb-8905-bbfa80d32e04
 2. BFF (Backend for Frontend): Прокси-сервер, координирующий поток данных между фронтендом и внутренними сервисами.
 3. Сервис для определения языка текста: Использует модель машинного обучения для идентификации языка.
 4. Сервис перевода: Подключён к API для выполнения перевода текста на целевой язык.
-5. ML модель: готовая модель langdetect
+5. ML модель: готовая модель papluca/xlm-roberta-base-language-detection
 
 TODO: С4 cхема
 
@@ -38,7 +42,7 @@ TODO: С4 cхема
 Используемые технологии отвечают поставленным задачам и требованиям:
 
 - Frontend: ReactJS выбран за его гибкость и распространённость.
-- Backend: Golang за его гибкость и производительность, Python за его простоту.
+- Backend: был выбран Python за его простоту и гибкость.
 - ML: Для выполнения задач определения языка текста выбрали уже обученную модель `papluca/xlm-roberta-base-language-detection` за ее достаточно высокую точность и простую интеграцию 
 
 ### Сетевые аспекты
