@@ -4,6 +4,5 @@ export type GetTranslatedTextRequest = {
 };
 
 export type GetTranslatedTextResponse = {
-  text: string;
-  source_language: string;
+  data: { text: string; source_language: string };
 };
