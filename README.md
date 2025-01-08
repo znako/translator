@@ -1,4 +1,6 @@
-TODO: ссылка на презу
+### Презентация и запись рабочего варианта
+
+https://github.com/znako/translator/blob/main/project_info/Presentation.pdf
 
 https://github.com/user-attachments/assets/2356ce1b-3ee0-4ebb-8905-bbfa80d32e04
 
