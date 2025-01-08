@@ -4,13 +4,13 @@ import { Copy } from "@gravity-ui/icons";
 import "./styles.css";
 
 const SELECT_TRANSLATE_LANGUAGE_OPTIONS = [
-  { value: "RUS", content: "Русский" },
-  { value: "ENG", content: "Английский" },
-  { value: "UZB", content: "Узбекский" },
-  { value: "TATAR", content: "Татарский" },
+  { value: "ru", content: "Русский" },
+  { value: "en", content: "Английский" },
+  { value: "uz", content: "Узбекский" },
+  { value: "tt", content: "Татарский" },
 ];
 
-const DEFAULT_TRANSLATE_LANGUAGE = ["RUS"];
+const DEFAULT_TRANSLATE_LANGUAGE = ["ru"];
 
 type TranslatedAreaProps = {
   translatedText?: string;
